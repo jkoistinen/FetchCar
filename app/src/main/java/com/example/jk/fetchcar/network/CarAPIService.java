@@ -1,16 +1,8 @@
 package com.example.jk.fetchcar.network;
 
 import com.example.jk.fetchcar.model.car.Car;
-import com.google.gson.JsonObject;
-
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
-
-/**
- * Created by jk on 2017-02-03.
- */
 
 public interface CarAPIService {
 
