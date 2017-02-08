@@ -1,4 +1,4 @@
-package com.example.jk.fetchcar.model.car;
+package com.example.jk.fetchcar.model.vehicle;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

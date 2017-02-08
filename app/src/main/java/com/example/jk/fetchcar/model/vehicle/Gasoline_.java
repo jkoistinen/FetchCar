@@ -1,4 +1,4 @@
-package com.example.jk.fetchcar.model.car;
+package com.example.jk.fetchcar.model.vehicle;
 
 /**
  * Created by jk on 2017-02-03.

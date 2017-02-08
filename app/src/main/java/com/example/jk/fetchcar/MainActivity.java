@@ -4,12 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.jk.fetchcar.model.car.Car;
-import com.example.jk.fetchcar.model.car.Co2;
-import com.example.jk.fetchcar.model.car.Emission;
-import com.example.jk.fetchcar.model.car.Fuel;
-import com.example.jk.fetchcar.model.car.Gasoline;
-import com.example.jk.fetchcar.network.CarAPIService;
+import com.example.jk.fetchcar.model.vehicle.Vehicle;
+import com.example.jk.fetchcar.model.vehicle.Co2;
+import com.example.jk.fetchcar.model.vehicle.Emission;
+import com.example.jk.fetchcar.model.vehicle.Fuel;
+import com.example.jk.fetchcar.model.vehicle.Gasoline;
+import com.example.jk.fetchcar.network.VehicleAPIService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        CarAPIService service1 = retrofit.create(CarAPIService.class);
+        VehicleAPIService service1 = retrofit.create(VehicleAPIService.class);
 
-        Call<Car> car = service1.getCar();
+        Call<Vehicle> vehicle = service1.getVehicle();
 
-        car.enqueue(new Callback<Car>() {
+        vehicle.enqueue(new Callback<Vehicle>() {
             @Override
-            public void onResponse(Call<Car> call, Response<Car> response) {
+            public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {
 
-                Car car = response.body();
+                Vehicle vehicle = response.body();
 
                 TextView regnoTV = (TextView) findViewById(R.id.regno);
                 TextView vinTV = (TextView) findViewById(R.id.vin);
@@ -48,27 +48,27 @@ public class MainActivity extends AppCompatActivity {
                 TextView fuelTV = (TextView) findViewById(R.id.fuel);
                 TextView gearboxtypeTV = (TextView) findViewById(R.id.gearboxtype);
 
-                regnoTV.setText(car.getRegno());
-                vinTV.setText(car.getVin());
-                timestampTV.setText(car.getTimestamp());
+                regnoTV.setText(vehicle.getRegno());
+                vinTV.setText(vehicle.getVin());
+                timestampTV.setText(vehicle.getTimestamp());
 
-                Emission emission = car.getEmission();
+                Emission emission = vehicle.getEmission();
                 Gasoline gasoline = emission.getGasoline();
                 Co2 co2 = gasoline.getCo2();
                 String co2Mixed = Double.toString(co2.getMixed());
 
                 emissionTV.setText(co2Mixed);
 
-                Fuel fuel = car.getFuel();
+                Fuel fuel = vehicle.getFuel();
                 String fuelMixed = Double.toString(fuel.getGasoline().getAverageConsumption().getMixed());
                 fuelTV.setText(fuelMixed);
 
-                gearboxtypeTV.setText(car.getGearboxType());
+                gearboxtypeTV.setText(vehicle.getGearboxType());
 
             }
 
             @Override
-            public void onFailure(Call<Car> call, Throwable t) {
+            public void onFailure(Call<Vehicle> call, Throwable t) {
                 //Failure
             }
         });

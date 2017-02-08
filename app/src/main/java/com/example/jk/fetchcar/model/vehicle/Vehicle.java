@@ -1,4 +1,4 @@
-package com.example.jk.fetchcar.model.car;
+package com.example.jk.fetchcar.model.vehicle;
 
 /**
  * Created by jk on 2017-02-03.
@@ -8,7 +8,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
-public class Car {
+public class Vehicle {
 
     @SerializedName("regno")
     @Expose
