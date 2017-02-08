@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://gist.githubusercontent.com")
+                .baseUrl(Constants.BASEURL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
