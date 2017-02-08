@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 Emission emission = vehicle.getEmission();
                 Gasoline gasoline = emission.getGasoline();
                 Co2 co2 = gasoline.getCo2();
-                String co2Mixed = Double.toString(co2.getMixed());
+                String co2Mixed = StringFormatter.format(co2.getMixed());
 
                 emissionTV.setText(co2Mixed);
 
                 Fuel fuel = vehicle.getFuel();
-                String fuelMixed = Double.toString(fuel.getGasoline().getAverageConsumption().getMixed());
+                String fuelMixed = StringFormatter.format(fuel.getGasoline().getAverageConsumption().getMixed());
                 fuelTV.setText(fuelMixed);
 
                 gearboxtypeTV.setText(vehicle.getGearboxType());
@@ -72,6 +72,5 @@ public class MainActivity extends AppCompatActivity {
                 //Failure
             }
         });
-
     }
 }
