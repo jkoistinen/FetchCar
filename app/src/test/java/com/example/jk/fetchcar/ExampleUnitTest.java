@@ -11,7 +11,16 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void decimalFormat_isCorrect() throws Exception {
+        double d = 0.000175;
+        String result = "0.000175";
+        assertEquals(result, StringFormatter.decimalFormat(d));
+    }
+
+    @Test
+    public void toUpperCase_isCorrect() throws Exception {
+        String s = "test123";
+        String result = "TEST123";
+        assertEquals(result, StringFormatter.toUpperCase(s));
     }
 }
