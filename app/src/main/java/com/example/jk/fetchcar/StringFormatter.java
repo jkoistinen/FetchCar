@@ -14,4 +14,9 @@ public class StringFormatter {
         return df.format(d);
     }
 
+    public static String toUpperCase(String s)
+    {
+        return s.toUpperCase();
+    }
+
 }

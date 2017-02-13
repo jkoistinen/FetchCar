@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     TextView fuelTV = (TextView) findViewById(R.id.fuel);
                     TextView gearboxtypeTV = (TextView) findViewById(R.id.gearboxtype);
 
-                    regnoTV.setText(vehicle.getRegno());
-                    vinTV.setText(vehicle.getVin());
+                    regnoTV.setText(StringFormatter.toUpperCase(vehicle.getRegno()));
+                    vinTV.setText(StringFormatter.toUpperCase(vehicle.getVin()));
                     timestampTV.setText(vehicle.getTimestamp());
 
                     Emission emission = vehicle.getEmission();
