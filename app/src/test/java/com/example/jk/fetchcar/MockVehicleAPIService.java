@@ -5,7 +5,10 @@ import com.example.jk.fetchcar.network.VehicleAPIService;
 
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -22,6 +25,20 @@ import static junit.framework.Assert.assertEquals;
 
 public class MockVehicleAPIService {
 
+    private static final String  ASSET_BASE_PATH = "../app/src/test/java/com/example/jk/fetchcar/assets/";
+
+    private String readJsonFile (String filename) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(ASSET_BASE_PATH + filename)));
+        StringBuilder sb = new StringBuilder();
+        String line = br.readLine();
+        while (line != null) {
+            sb.append(line);
+            line = br.readLine();
+        }
+
+        return sb.toString();
+    }
+
     @Test
     public void test_200() throws IOException {
 
@@ -32,33 +49,7 @@ public class MockVehicleAPIService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        mockWebServer.enqueue(new MockResponse().setBody("{\n" +
-                "  \"regno\": \"wur816\",\n" +
-                "  \"vin\": \"tmbga61z852094863\",\n" +
-                "  \"timestamp\": \"2015-05-29T12:18:31.390Z\",\n" +
-                "  \"emission\": {\n" +
-                "    \"gasoline\": {\n" +
-                "      \"co2\": {\n" +
-                "        \"mixed\": 0.000175\n" +
-                "      }\n" +
-                "    }\n" +
-                "  },\n" +
-                "  \"fuel\": {\n" +
-                "    \"gasoline\": {\n" +
-                "      \"average_consumption\": {\n" +
-                "        \"urban\": 0.000099,\n" +
-                "        \"rural\": 0.000058,\n" +
-                "        \"mixed\": 0.000073\n" +
-                "      }\n" +
-                "    }\n" +
-                "  },\n" +
-                "  \"gearbox_type\": \"manual\",\n" +
-                "  \"year\": 2005,\n" +
-                "  \"brand\": \"volvo\",\n" +
-                "  \"fuel_types\": [\n" +
-                "    \"gasoline\"\n" +
-                "  ]\n" +
-                "}"));
+        mockWebServer.enqueue(new MockResponse().setBody(readJsonFile("response_200.json")));
 
         VehicleAPIService service1 = retrofit.create(VehicleAPIService.class);
 
@@ -99,6 +90,5 @@ public class MockVehicleAPIService {
         assertEquals(response.message(), "Client Error");
 
         mockWebServer.shutdown();
-
     }
 }
