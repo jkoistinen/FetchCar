@@ -64,7 +64,7 @@ public class MockVehicleAPIService {
         assertEquals(StringFormatter.toUpperCase(vehicleObject.getVin()), "TMBGA61Z852094863");
 
         assertEquals(vehicleObject.getEmission().getGasoline().getCo2().getMixed(), 0.000175);
-        assertEquals(StringFormatter.decimalFormat(vehicleObject.getEmission().getGasoline().getCo2().getMixed()), "0.000175");
+        assertEquals(StringFormatter.toDecimalFormat(vehicleObject.getEmission().getGasoline().getCo2().getMixed()), "0.000175");
 
         mockWebServer.shutdown();
     }

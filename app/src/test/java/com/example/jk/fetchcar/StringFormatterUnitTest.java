@@ -9,12 +9,12 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class StringFormatterUnitTest {
     @Test
-    public void decimalFormat_isCorrect() throws Exception {
+    public void toDecimalFormat_isCorrect() throws Exception {
         double d = 0.000175;
         String result = "0.000175";
-        assertEquals(result, StringFormatter.decimalFormat(d));
+        assertEquals(result, StringFormatter.toDecimalFormat(d));
     }
 
     @Test

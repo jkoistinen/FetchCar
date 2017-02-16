@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 
 public class StringFormatter {
 
-    public static String decimalFormat(double d)
+    public static String toDecimalFormat(double d)
     {
         DecimalFormat df = new DecimalFormat("##.#######");
         return df.format(d);

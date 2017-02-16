@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
                     Emission emission = vehicle.getEmission();
                     Gasoline gasoline = emission.getGasoline();
                     Co2 co2 = gasoline.getCo2();
-                    String co2Mixed = StringFormatter.decimalFormat(co2.getMixed());
+                    String co2Mixed = StringFormatter.toDecimalFormat(co2.getMixed());
 
                     emissionTV.setText(co2Mixed);
 
                     Fuel fuel = vehicle.getFuel();
-                    String fuelMixed = StringFormatter.decimalFormat(fuel.getGasoline().getAverageConsumption().getMixed());
+                    String fuelMixed = StringFormatter.toDecimalFormat(fuel.getGasoline().getAverageConsumption().getMixed());
                     fuelTV.setText(fuelMixed);
 
                     gearboxtypeTV.setText(vehicle.getGearboxType());
